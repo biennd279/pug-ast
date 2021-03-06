@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container.text-center
+        h1.navbar.navbar-light.bg-light list students
+        table.table.table-striped
+            tr
+                th id
+                th name
+                th phone
+                th email
+                th view
+            each student, index in students
+                tr
+                    td= index
+                    td= student.name
+                    td= student.phone
+                    td= student.email
+                    td
+                        a(href=`/students/${student._id}`).btn.btn-primary View
+        a(href="/") Back to index

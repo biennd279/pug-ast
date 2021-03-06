@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    .container.align-items-center.d-flex.justify-content-center
+        .card.p-0.col-6.shadow.bg-light.align-items-center
+            .card-body.align-items-center
+                .d-flex.m-3
+                    .col.pl-4.text-muted Id
+                    .col.pr-4 #{student._id}
+                .d-flex.m-3
+                    .col.pl-4.text-muted Name
+                    .col.pr-4 #{student.name}
+                .d-flex.m-3
+                    .col.pl-4.text-muted Phone
+                    .col.pr-4 #{student.phone}
+                .d-flex.m-3
+                    .col.pl-4.text-muted Email
+                    .col.pr-4 #{student.email}
+                .d-flex.m-3.justify-content-center
+                    a(href="/students").btn.btn-primary Back to the Student list
