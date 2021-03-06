@@ -14,10 +14,10 @@ module.exports = {
       charset: "utf8mb4",
     },
     migrations: {
-      directory: path.join(__dirname, "./databases/migrations"),
+      directory: path.join(__dirname, "./app/databases/migrations"),
     },
     seeds: {
-      directory: path.join(__dirname, "./databases/seeds/development"),
+      directory: path.join(__dirname, "./app/databases/seeds/development"),
     },
   },
 
@@ -31,10 +31,10 @@ module.exports = {
       charset: "utf8mb4",
     },
     migrations: {
-      directory: path.join(__dirname, "./databases/migrations"),
+      directory: path.join(__dirname, "./app/databases/migrations"),
     },
     seeds: {
-      directory: path.join(__dirname, "./databases/seeds/development"),
+      directory: path.join(__dirname, "./app/databases/seeds/development"),
     },
   },
 
@@ -48,10 +48,10 @@ module.exports = {
       charset: "utf8mb4",
     },
     migrations: {
-      directory: path.join(__dirname, "./databases/migrations"),
+      directory: path.join(__dirname, "./app/databases/migrations"),
     },
     seeds: {
-      directory: path.join(__dirname, "./databases/seeds/development"),
+      directory: path.join(__dirname, "./app/databases/seeds/development"),
     },
   }
 };

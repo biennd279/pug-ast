@@ -2,13 +2,21 @@ version: "3.4"
 
 services:
   mysql-db:
+    container_name: db
+    env_file:
+      - ./.env
     image: mysql:5.7
     restart: 'always'
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  nodejs:
-
-
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+  app:
+    build: .
+    command: sh -c "./wait-for-it.sh db:3306 -- npm run knex migrate:latest && npm run knex seed:run && pm2-runtime start ecosystem.config.js"
+    container_name: nodejs
+    depends_on:
+      - mysql-db
+    ports:
+      - 3000:3000

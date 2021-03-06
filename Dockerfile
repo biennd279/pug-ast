@@ -1,5 +1,6 @@
-FROM node:alpine3
-COPY . /app
+FROM node
 WORKDIR /app
-RUN npm install
-RUN
+RUN npm install -g pm2
+COPY ["package.json", "package-lock.json*", "./"]
+RUN npm install --production
+COPY . .

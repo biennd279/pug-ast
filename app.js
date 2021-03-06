@@ -6,7 +6,6 @@ const logger = require('morgan');
 const nocache = require('nocache');
 const session = require('express-session')
 const cors = require('cors');
-const isolatedSession = require('./app/middleware/isolateSession')
 
 const webRouter = require('./routes/web');
 const apiRouter = require('./routes/api')
@@ -24,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(nocache())
 
-// Remake app but using old core =(
+
 app.use('/api/', cors(), apiRouter);
 
 app.use('/', session({

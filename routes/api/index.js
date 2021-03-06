@@ -12,6 +12,8 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+    let obj = unflatten(req.body)
+
     return res.status(200).json({
         message: 'Ok'
     })

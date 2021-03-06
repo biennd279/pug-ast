@@ -22,7 +22,6 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", (req, res, next) => {
     Student.query().findOne({id : req.params.id})
         .then(student => {
-            console.log(student)
             res.render("student", {student : student})
         })
         .catch(error => {
