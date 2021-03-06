@@ -2,23 +2,35 @@
 
 const express = require('express');
 const router = express.Router();
-const studentService = require("../../app/services/student")
 const Student = require("../../app/models/student")
 
-router.get("/", (req, res, next) => {
-    res.render("students", {students : []})
+router.get("/", async (req, res, next) => {
+    Student.query()
+        .then(students => {
+            res.render("students", {students : students})
+        })
+        .catch(error => {
+            next(error)
+        })
 })
 
-// Close api for maintain
+// This feature still developing...
 /*router.post("/", (req, res, next) => {
 
 }) */
 
 router.get("/:id", (req, res, next) => {
-    res.render("student", {})
+    Student.query().findOne({id : req.params.id})
+        .then(student => {
+            console.log(student)
+            res.render("student", {student : student})
+        })
+        .catch(error => {
+            next(error)
+        })
 })
 
-// Close for maintain
+// This feature still developing...
 /* router.post("/:id/update", ((req, res, next) => {
 
 })) */
